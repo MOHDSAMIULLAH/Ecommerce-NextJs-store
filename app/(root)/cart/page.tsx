@@ -37,7 +37,7 @@ const Cart = () => {
       } else {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
           method: "POST",
-          mode: 'cors',
+          mode: 'no-cors',
           body: JSON.stringify({ cartItems: cart.cartItems, customer }),
           headers: corsHeaders
         });
