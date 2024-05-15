@@ -37,6 +37,7 @@ const Cart = () => {
           body: JSON.stringify({ cartItems: cart.cartItems, customer })
         });
         const data = await res.json();
+        console.log(data);
         window.location.href = data.url;
         console.log(data);
       }
