@@ -7,6 +7,12 @@ import { MinusCircle, PlusCircle, Trash } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+};
+
 const Cart = () => {
   const router = useRouter();
   const { user } = useUser();
@@ -32,6 +38,7 @@ const Cart = () => {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
           method: "POST",
           body: JSON.stringify({ cartItems: cart.cartItems, customer }),
+          headers: corsHeaders,
         });
         const data = await res.json();
         window.location.href = data.url;
