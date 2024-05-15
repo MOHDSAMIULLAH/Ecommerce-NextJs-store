@@ -39,7 +39,7 @@ const Cart = () => {
           method: "POST",
           mode: 'no-cors',
           body: JSON.stringify({ cartItems: cart.cartItems, customer }),
-          headers: corsHeaders
+          // headers: corsHeaders
         });
         const data = await res.json();
         window.location.href = data.url;
