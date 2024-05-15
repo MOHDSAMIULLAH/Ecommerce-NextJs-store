@@ -7,11 +7,7 @@ import { MinusCircle, PlusCircle, Trash } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-const corsHeaders = {
-  // "Origin": "https://ecommerce-next-js-clothes-store.vercel.app",
-  // 'Accept': 'application/json',
-  'Content-Type': 'application/json'
-};
+
 
 const Cart = () => {
   const router = useRouter();
@@ -37,9 +33,8 @@ const Cart = () => {
       } else {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
           method: "POST",
-          mode: 'no-cors',
-          body: JSON.stringify({ cartItems: cart.cartItems, customer }),
-          // headers: corsHeaders
+          mode: "no-cors",
+          body: JSON.stringify({ cartItems: cart.cartItems, customer })
         });
         const data = await res.json();
         window.location.href = data.url;
