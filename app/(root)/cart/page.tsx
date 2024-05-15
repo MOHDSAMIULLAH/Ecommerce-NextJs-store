@@ -7,8 +7,6 @@ import { MinusCircle, PlusCircle, Trash } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-
-
 const Cart = () => {
   const router = useRouter();
   const { user } = useUser();
@@ -33,11 +31,9 @@ const Cart = () => {
       } else {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
           method: "POST",
-          mode: "no-cors",
-          body: JSON.stringify({ cartItems: cart.cartItems, customer })
+          body: JSON.stringify({ cartItems: cart.cartItems, customer }),
         });
         const data = await res.json();
-        console.log(data);
         window.location.href = data.url;
         console.log(data);
       }
