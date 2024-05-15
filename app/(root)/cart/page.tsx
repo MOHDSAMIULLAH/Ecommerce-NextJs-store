@@ -8,9 +8,9 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const corsHeaders = {
-  "Access-Control-Allow-Origin": "https://ecommerce-next-js-clothes-store.vercel.app",
-  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-  "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers",
+  // "Origin": "https://ecommerce-next-js-clothes-store.vercel.app",
+  // 'Accept': 'application/json',
+  'Content-Type': 'application/json'
 };
 
 const Cart = () => {
@@ -36,8 +36,8 @@ const Cart = () => {
         router.push("sign-in");
       } else {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
-          mode: 'cors',
           method: "POST",
+          mode: 'cors',
           body: JSON.stringify({ cartItems: cart.cartItems, customer }),
           headers: corsHeaders
         });
